@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+Có nhiều cách để thực hiện unsubscribe 1 subscription trong rxjs:
+  - unsubscribe subscription trong ngOnDestroy của từng component
+  - Sử dụng async pipe, nhưng async chỉ unsubscribe subsciption mà chính nó tạo ra mà thôi
+  - Kế thừa Base class - class đã thực hiện unsubscribe trong OnDestroy (tư tưởng kế thừa) nhưng cách này sẽ không hiệu quả khi ta muốn component kế thừa 1 class khác hoặc component được kế thừa có thể sẽ chứa những logic code không cần thiết
+  - Viết 1 destroy service và provide vào component cần dùng, với mỗi subscription ta sẽ takeUntil nó - tư tưởng composition (đấy là cách được implement trong project này)
