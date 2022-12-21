@@ -18,17 +18,16 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
-Có nhiều cách để thực hiện unsubscribe 1 subscription trong rxjs:
-  - unsubscribe subscription trong ngOnDestroy của từng component
+## Description
+Có nhiều cách để thực hiện unsubscribe 1 subscription trong Angular component:
+  - Unsubscribe subscription trong ngOnDestroy của component
   - Sử dụng async pipe, nhưng async chỉ unsubscribe subsciption mà chính nó tạo ra mà thôi
-  - Kế thừa Base class - class đã thực hiện unsubscribe trong OnDestroy (tư tưởng kế thừa) nhưng cách này sẽ không hiệu quả khi ta muốn component kế thừa 1 class khác hoặc component được kế thừa có thể sẽ chứa những logic code không cần thiết
+  - Kế thừa Base conponent class - class đã thực hiện unsubscribe trong OnDestroy (tư tưởng kế thừa) nhưng cách này sẽ không hiệu quả khi ta muốn component kế thừa 1 class khác hoặc component được kế thừa có thể sẽ chứa những logic code không cần thiết
   - Viết 1 destroy service và provide vào component cần dùng, với mỗi subscription ta sẽ takeUntil nó - tư tưởng composition (đấy là cách được implement trong project này)
+
+## English
+There are many ways to unsubscribe from 1 subsciption in the Angular component:
+  - Unsubscribing the subscription in the ngOnDestroy method of a component
+  - Using an async pipe, but async pipe only unsubscribes its subscription that it self created
+  - Extending a Base component class, that unsubscribes subscriptions in the ngOnDestroy method (Inheritence Ideology). But this way has some adverse: a component class cannot extend another class or component class can have unnecessary logic code.
+  - Using a Destroy service, then providing it into the component class. Then with each subscription, we need to use takeUntil operator (Composition Ideology). This way was implemented in this project.
