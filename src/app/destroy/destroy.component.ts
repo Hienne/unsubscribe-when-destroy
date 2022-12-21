@@ -14,7 +14,7 @@ export class DestroyComponent implements OnInit {
 
   private readonly destroy$ = injectDestroyService();
 
-  private todoList$: Observable<any> = this.todoService.getTodoList();
+  todoList$: Observable<any> = this.todoService.getTodoList();
 
   ngOnInit(): void {
     this.todoList$.pipe(
